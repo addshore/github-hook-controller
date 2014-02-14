@@ -1,5 +1,19 @@
 {
+	"name": "addshore/github-hook-controller",
+	"type": "library",
+	"description": "Used easily update lots of github hooks",
+	"keywords": ["Github","Hook","IRC"],
+	"authors": [
+		{
+			"name": "Addshore"
+		}
+	],
 	"require": {
 		"knplabs/github-api": "1.2.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"GithubHookController\\": "src/"
+		}
 	}
 }

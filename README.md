@@ -1,11 +1,7 @@
-wmde Github Irc Hooks
+Github Irc Hook Controller
 ==================
 
-Makes changing the wmde github irc hooks easy!
-
-Currently github doesnt make it easy to change some settings or change mass hooks!
-
-See $hookTargets and $hookParams in githubHookChanger.php
+Makes changing lots of IRC hooks on github easy!
 
 ## Install
 
@@ -19,3 +15,12 @@ Then we have to install our dependencies using:
 ```bash
 $ php composer.phar install
 ```
+
+## Examples
+
+See /examples
+
+## TODO
+
+* Add support for recursion of repos for a given user
+* Add support for packagist hooks!
