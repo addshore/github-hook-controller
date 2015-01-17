@@ -2,7 +2,7 @@
 
 namespace GithubHookController;
 
-use Github\Exception\ExceptionInterface;
+use Exception;
 
 class IrcHookController extends HookControllerBase {
 
@@ -12,8 +12,8 @@ class IrcHookController extends HookControllerBase {
 	 * @param string $repo for example github-irchook-controller
 	 */
 	public function setIrcHook( $hook, $user, $repo ) {
-		$id = $this->getHookId( 'irc', $user, $repo );
 		try{
+			$id = $this->getHookId( 'irc', $user, $repo );
 			if( !$id ) {
 				$this->repoApi->hooks()->create( $user, $repo, $hook );
 				echo "Created new IRC hook for " . $user . '/' . $repo . "\n";
@@ -22,7 +22,7 @@ class IrcHookController extends HookControllerBase {
 				echo "Updated IRC hook for " . $user . '/' . $repo . "\n";
 			}
 		}
-		catch( ExceptionInterface $e ) {
+		catch( Exception $e ) {
 			echo "Failed to update IRC hook: " . $e->getMessage() . "\n";
 		}
 	}

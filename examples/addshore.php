@@ -4,16 +4,24 @@
  * Repositories to add / alter the irc hook for
  */
 $hookTargets = array(
-	'guzzle-mediawiki-client',
-	'guzzle-mediawiki-client-generator',
-	'wikitext-to-markdown',
-	'DisableSpecialPages',
-	'GoogleSiteVerification',
-	'bin',
-	'apc-gui',
-	'random',
-	'LabsDumpScanner',
-	'github-hook-controller',
+	'addshore' => array(
+		'wikitext-to-markdown',
+		'DisableSpecialPages',
+		'GoogleSiteVerification',
+		'bin',
+		'apc-gui',
+		'random',
+		'LabsDumpScanner',
+		'github-hook-controller',
+		'phergie-irc-plugin-react-wikidata',
+	),
+	'addwiki' => array(
+		'mediawiki-datamodel',
+		'mediawiki-api',
+		'mediawiki-api-base',
+		'wikibase-api',
+		'addwiki.github.io',
+	),
 );
 
 /**
@@ -45,6 +53,9 @@ $client->authenticate( $token, null, \Github\Client::AUTH_HTTP_TOKEN );
 
 $controller = new \GithubHookController\IrcHookController( $client );
 
-foreach( $hookTargets as $repo ) {
-	$controller->setIrcHook( $hook, 'addshore', $repo );
+
+foreach( $hookTargets as $user => $repos ) {
+	foreach( $repos as $repo ) {
+		$controller->setIrcHook( $hook, $user, $repo );
+	}
 }
